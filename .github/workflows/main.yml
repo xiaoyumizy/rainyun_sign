@@ -10,11 +10,11 @@ jobs:
     steps: 
       - name: Install dependencies
         run: |
+          ls
           python -m pip install --upgrade pip
           pip install -r main/requirements.txt
       - name: sign the rainyun
         run: |
-            cd main
             python main/main.py
 
     
