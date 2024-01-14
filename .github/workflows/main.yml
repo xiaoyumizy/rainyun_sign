@@ -10,6 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: sign the rainyun
-        run: |
-          pip install requests.txt
-          python main.py
+      - run: pip install requests.txt
+      - run : python main.py
