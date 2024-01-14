@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: sign the rainyun
-        run: python ./main.py
+        run: python main.py
