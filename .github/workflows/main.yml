@@ -1,0 +1,12 @@
+name: ranyun_sign
+on:
+  schedule: 
+    - cron: '1 8 * * *'
+
+jobs:
+  rainyun_sign:
+    name: rainyun sign
+    runs-on: ubuntu-latest
+    steps:
+    - name: sign the rainyun
+      run: python ./main.py
