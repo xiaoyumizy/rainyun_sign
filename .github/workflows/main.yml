@@ -11,11 +11,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          cd main
-          pip install -r requirements.txt
+          pip install -r main/requirements.txt
       - name: sign the rainyun
         run: |
             cd main
-            python ./main.py
+            python main/main.py
 
     
