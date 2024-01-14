@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: sign the rainyun
         run: |
-          python
+          python main.py
