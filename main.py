@@ -9,7 +9,7 @@ tgpush = 'true'
 # 获取私密仓库变量
 api_key = os.environ.get('API_KEY')
 bot_token = os.environ.get('BOT_TOKEN')
-chat_id = os.environ.get('CHAT_ID')
+chat_id = os.environ.get('CCHAT_ID')
 
 #请求用户信息
 url = "https://api.v2.rainyun.com/user/"
