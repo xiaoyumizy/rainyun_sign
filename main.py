@@ -45,8 +45,9 @@ if points == {pointsbefore + 300}:
 else:
     print(f'签到失败，返回值：{res_lqjf.text}')
 print('==============================')
-#推送
-if tgpush == 'true':
-    sendmessage = '''傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text)
-    bot = telepot.Bot(bot_token)
-    bot.sendMessage(chat_id, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+try:
+   #推送
+   if tgpush == 'true':
+       sendmessage = '''傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text)
+       bot = telepot.Bot(bot_token)
+       bot.sendMessage(chat_id, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
