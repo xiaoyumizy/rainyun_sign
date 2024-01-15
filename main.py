@@ -1,6 +1,7 @@
 import requests
 import json
 import telepot
+import os
 
 #Api信息
 tgpush = 'true'
