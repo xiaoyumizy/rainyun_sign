@@ -3,10 +3,9 @@ import json
 import telepot
 
 #Api信息
-api_key = ''
-tgpush = ''
-msgid = ''
-bot_token = ''
+
+tgpush = 'true'
+
 
 #请求用户信息
 url = "https://api.v2.rainyun.com/user/"
