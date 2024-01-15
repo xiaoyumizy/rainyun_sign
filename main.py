@@ -9,7 +9,7 @@ tgpush = 'true'
 # 获取私密仓库变量
 API_KEY = os.environ.get('API_KEY')
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
-MSG_ID = os.environ.get('MSG_ID')
+CHAT_ID = os.environ.get('CHAT_ID')
 
 # 请求用户信息
 url = "https://api.v2.rainyun.com/user/"
@@ -49,6 +49,6 @@ print('==============================')
 
 # 推送
 if tgpush == 'true':
-    sendmessage = '''雨云自动签到Bot\n签到通知\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\nhttps://github.com/ZYGLQexplorer/RainYun-Checkin'''.format(ID, name, pointsbefore, points)
+    sendmessage = '''雨云自动签到Bot\n签到通知\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}'''.format(ID, name, pointsbefore, points)
     bot = telepot.Bot(BOT_TOKEN)
-    bot.sendMessage(MSG_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+    bot.sendMessage(CHAT_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
