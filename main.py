@@ -7,9 +7,9 @@ import os
 tgpush = 'true'
 
 # 获取私密仓库变量
-API_KEY = os.environ.get('API_KEY')
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
-CHAT_ID = os.environ.get('CHAT_ID')
+api_key = os.environ.get('API_KEY')
+bot_token = os.environ.get('BOT_TOKEN')
+chat_id = os.environ.get('CHAT_ID')
 
 #请求用户信息
 url = "https://api.v2.rainyun.com/user/"
@@ -49,4 +49,4 @@ print('==============================')
 if tgpush == 'true':
     sendmessage = '''傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text)
     bot = telepot.Bot(bot_token)
-    bot.sendMessage(msgid, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+    bot.sendMessage(chat_id, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
