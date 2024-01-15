@@ -31,7 +31,3 @@ jobs:
       
     - name: Run script
       run: python main.py
-        env:
-          API_KEY: ${{ env.API_KEY }}
-          BOT_TOKEN: ${{ env.BOT_TOKEN }}
-          MSG_ID: ${{ env.MSG_ID }}
