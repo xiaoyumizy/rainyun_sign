@@ -49,6 +49,6 @@ print('==============================')
 
 # 推送
 if tgpush == 'true':
-    sendmessage = '''#雨云自动签到\n签到通知\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}'''.format(ID, name, pointsbefore, points)
+    sendmessage = f'#雨云自动签到\n签到通知\n用户ID：{ID}\n用户名：{name}\n签到前积分：{pointsbefore}\n当前积分：{points}\n返回值：{res_lqjf.text}'
     bot = telepot.Bot(BOT_TOKEN)
     bot.sendMessage(CHAT_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
