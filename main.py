@@ -45,9 +45,7 @@ if points == {pointsbefore + 300}:
 else:
     print(f'签到失败，返回值：{res_lqjf.text}')
 print('==============================')
-try:
-   #推送
-   if tgpush == 'true':
-       a = requests.request("GET", f'https://api.telegram.org/bot{bot_token}/sendmessage?chat_id={chat_id}&text=傻逼雨云自动签到\n用户ID：{ID}\n用户名：{name}\n签到前积分：{pointsbefore}\n当前积分：{points}\n签到结果\n<pre>{res_lqjf.text}</pre>&parse_mode=HTML') 
-except Exception as e:
-    print(f"发生了一个错误: {e}")
+if tgpush == 'true':
+   sendmessage = '''傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text)
+   bot = telepot.Bot(bot_token)
+   bot.sendMessage(chat_id, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
