@@ -11,7 +11,7 @@ tgpush = 'true'
 url = "https://api.v2.rainyun.com/user/"
 payload={}
 headers_yh = {
-   'X-Api-Key': api_key
+   'X-Api-Key': API_KEY
 }
 res_points = requests.request("GET", url, headers=headers_yh, data=payload)
 zh_json = res_points.json()
@@ -26,7 +26,7 @@ print('==============================')
 url_lqjf = 'https://api.v2.rainyun.com/user/reward/tasks'
 headers_lqjf = {
     'content-type':"application/json",
-    'X-Api-Key':api_key
+    'X-Api-Key':API_KEY
     }
 body_lqjf = {
     "task_name" : '每日签到',
@@ -44,6 +44,6 @@ print('==============================')
 #推送
 if tgpush == 'true':
     sendmessage = '''雨云自动签到Bot\n签到通知\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\nhttps://github.com/ZYGLQexplorer/RainYun-Checkin'''.format(ID, name, pointsbefore, points)
-    bot = telepot.Bot(bot_token)
-    bot.sendMessage(msgid, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+    bot = telepot.Bot(BOT_TOKEN)
+    bot。sendMessage(MSG_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
 
