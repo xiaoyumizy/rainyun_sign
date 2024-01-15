@@ -51,5 +51,5 @@ print('==============================')
 if tgpush == 'true':
    data =  res_lqjf.text
    sendmessage = '''#雨云自动签到\n签到通知\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n返回值：{4}'''.format(ID, name, pointsbefore, points, data)
-    bot = telepot.Bot(BOT_TOKEN)
-    bot.sendMessage(CHAT_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup
+   bot = telepot.Bot(BOT_TOKEN)
+   bot.sendMessage(CHAT_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup
