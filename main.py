@@ -47,6 +47,6 @@ else:
 print('==============================')
 try:
    #推送
-   requests.request("GET"，f'https://api.telegram.org/bot{bot_token}/sendmessage?chat_id={chat_id}&text=傻逼雨云自动签到\n用户ID：{ID}\n用户名：{name}\n签到前积分：{pointsbefore}\n当前积分：{points}\n签到结果\n<pre>{res_lqjf.text}</pre>&parse_mode=HTML')
+   a = requests.request("GET"，f'https://api.telegram.org/bot{bot_token}/sendmessage?chat_id={chat_id}&text=傻逼雨云自动签到\n用户ID：{ID}\n用户名：{name}\n签到前积分：{pointsbefore}\n当前积分：{points}\n签到结果\n<pre>{res_lqjf.text}</pre>&parse_mode=HTML')
 except Exception as e:
     print(f"发生了一个错误: {e}")
