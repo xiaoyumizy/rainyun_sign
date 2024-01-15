@@ -12,7 +12,7 @@ jobs:
     env:
       API_KEY: ${{ secrets.API_KEY }}
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      MSG_ID: ${{ secrets.MSG_ID }}
+      CHAT_ID: ${{ secrets.CHAT_ID }}
 
     steps:
     - name: Checkout repository
