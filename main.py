@@ -45,5 +45,5 @@ print('==============================')
 if tgpush == 'true':
     sendmessage = '''雨云自动签到Bot\n签到通知\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\nhttps://github.com/ZYGLQexplorer/RainYun-Checkin'''.format(ID, name, pointsbefore, points)
     bot = telepot.Bot(BOT_TOKEN)
-    bot。sendMessage(MSG_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+    bot.sendMessage(MSG_ID, sendmessage, parse_mode=None, disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
 
