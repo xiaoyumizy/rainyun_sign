@@ -1,5 +1,5 @@
 # rainyun_sign
-看什么看，没见过雨云自动签到啊，想抄袭的自己git
+看什么看，没见过雨云自动签到(利用GitHub action)啊，想抄袭的自己git
 自己在设置的私密变量里配置这几个变量
 ![Screenshot_2024-01-21-16-15-55-317_mark via](https://github.com/kndxhz/rainyun_sign/assets/113306265/1ac2c434-9cbc-4bb9-83ab-067aaf2db8ca)
 如果不要tg推送就将tg_push个改为空或者false
