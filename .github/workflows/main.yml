@@ -35,4 +35,4 @@ jobs:
 
       - name: Retry Run script
         if: steps.main.outcome == 'failure'
-        run: python main.py
+        run: python main.p
