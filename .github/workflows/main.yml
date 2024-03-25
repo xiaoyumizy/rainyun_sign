@@ -3,21 +3,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '1 16 * * *'
-  workflow_run:
-    workflows: ["ranyun_sign"]
-    types:
-      - completed
-    branches:
-      - main
-    permissions:
-      contents: read
-      pull-requests: write
-  
+
 jobs:
   rainyun_sign:
     runs-on: ubuntu-latest
-    outputs:
-      completed: ${{ job.status == 'completed' }}
     
     env:
       API_KEY: ${{ secrets.API_KEY }}
@@ -25,24 +14,25 @@ jobs:
       CHAT_ID: ${{ secrets.CHAT_ID }}
 
     steps:
-    - name: Checkout repository
-      if: ${{ github.event.workflow_run.conclusion == 'failure' || github.event_name == 'workflow_dispatch' }}
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+        
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Run script
+        id: main
+        continue-on-error: true
+        run: python main.py
 
-    - name: Set up Python
-      if: steps.checkout.outputs.completed
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Upgrade pip
-      if: steps.setup-python.outputs.completed
-      run: python -m pip install --upgrade pip
-
-    - name: Install dependencies
-      if: steps.setup-python.outputs.completed
-      run: pip install -r requirements.txt
-
-    - name: Run script
-      if: steps.setup-python.outputs.completed
-      run: python main.py
+      - name: Retry Run script
+        if: steps.main.outcome == 'failure'
+        run: python main.py
