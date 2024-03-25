@@ -31,8 +31,8 @@ jobs:
       - name: Run script
         id: main
         continue-on-error: true
-        run: python main.py
+        run: pyth main.py
 
       - name: Retry Run script
         if: steps.main.outcome == 'failure'
-        run: p main.py
+        run: python main.py
