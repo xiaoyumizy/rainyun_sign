@@ -11,12 +11,10 @@ api_key = os.environ.get('API_KEY')
 bot_token = os.environ.get('BOT_TOKEN')
 chat_id = os.environ.get('CHAT_ID')
 
-
-#请求用户信息
 url = "https://api.v2.rainyun.com/user/"
 payload={}
 headers_yh = {
-   'X-Api-Key': api_key
+'X-Api-Key': api_key
 }
 res_points = requests.request("GET", url, headers=headers_yh, data=payload)
 zh_json = res_points.json()
@@ -27,26 +25,27 @@ print(f'ID：{ID}')
 print(f'用户名：{name}')
 print(f'剩余积分：{pointsbefore}')
 print('==============================')
-#签到部分
-url_lqjf = 'https://api.v2.rainyun.com/user/reward/tasks'
+
+url_lqjf = 'https://api.v2.rainyun.com/user/reward/tasks' # 签到部分
 headers_lqjf = {
-    'content-type':"application/json",
-    'X-Api-Key':api_key
-    }
+  'content-type':"application/json",
+  'X-Api-Key':api_key
+}
 body_lqjf = {
-    "task_name" : '每日签到',
-    "verifyCode" : ''
-    }
+  "task_name" : '每日签到',
+  "verifyCode" : ''
+}
 res_lqjf = requests.request("POST", url_lqjf, headers=headers_lqjf, data = json.dumps(body_lqjf))
 res_points = requests.request("GET", url, headers=headers_yh, data=payload)
 zh_json = res_points.json()
 points = zh_json['data']['Points']
 if points == {pointsbefore + 300}:
-    print(f'签到成功，当前剩余积分：{points + 300}')
+  print(f'签到成功，当前剩余积分：{points + 300}')
 else:
-    print(f'签到失败，返回值：{res_lqjf.text}')
+  print(f'签到失败，返回值：{res_lqjf.text}')
 print('==============================')
-if tgpush == 'true':
-   sendmessage = '''#傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text)
-   bot = telepot.Bot(bot_token)
-   bot.sendMessage(chat_id, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+if tgpush == 'true': # 推送
+  sendmessage = '''#傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n积分价值：{5} CNY\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text, round(int(points)/2000))
+  bot = telepot.Bot(bot_token)
+  bot.sendMessage(msgid, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
+
