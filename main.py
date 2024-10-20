@@ -4,7 +4,7 @@ import telepot
 import os
 
 #Api信息
-tgpush = 'true'
+tgpush = True
 
 # 获取私密仓库变量
 api_key = os.environ.get('API_KEY')
@@ -44,7 +44,7 @@ if points == {pointsbefore + 300}:
 else:
   print(f'签到失败，返回值：{res_lqjf.text}')
 print('==============================')
-if tgpush == 'true': # 推送
+if tgpush == True : # 推送
   sendmessage = '''#傻逼雨云自动签到\n用户ID：{0}\n用户名：{1}\n签到前积分：{2}\n当前积分：{3}\n积分价值：{5} CNY\n签到结果\n<pre>{4}</pre>'''.format(ID, name, pointsbefore, points,res_lqjf.text, round(int(points)/2000))
   bot = telepot.Bot(bot_token)
   bot.sendMessage(chat_id, sendmessage, parse_mode='HTML', disable_web_page_preview=True, disable_notification=None, reply_to_message_id=None, reply_markup=None)
