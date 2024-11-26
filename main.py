@@ -4,7 +4,7 @@ import telepot
 import os
 
 #Api信息
-tgpush = True
+tgpush = false
 
 # 获取私密仓库变量
 api_key = os.environ.get('API_KEY')
